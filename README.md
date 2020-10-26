@@ -1,4 +1,4 @@
-# sen-api
+# sen-api ![GitHub](https://img.shields.io/github/license/marcovolpato00/sen-api)
 
 A command-line tool to interact with **S**ervizio **E**lettrico **N**azionale web services.
 
