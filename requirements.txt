@@ -1,0 +1,9 @@
+requests
+beautifulsoup4
+pytest
+vcrpy
+coverage
+click
+halo
+loguru
+rich
