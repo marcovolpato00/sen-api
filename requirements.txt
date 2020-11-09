@@ -7,3 +7,5 @@ click
 halo
 loguru
 rich
+wheel
+twine
