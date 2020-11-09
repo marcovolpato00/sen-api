@@ -1,4 +1,4 @@
-# sen-api ![GitHub](https://img.shields.io/github/license/marcovolpato00/sen-api)
+# sen-api ![GitHub](https://img.shields.io/github/license/marcovolpato00/sen-api) ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/marcovolpato00/sen-api/Upload%20Python%20Package)
 
 A command-line tool to interact with **S**ervizio **E**lettrico **N**azionale web services.
 
