@@ -133,7 +133,7 @@ def all_readings(json):
         table.add_column('End', style='green')
         table.add_column('Days')
         table.add_column('Total consumption', justify='center')
-        table.add_column('Mean consumption', justify='center')
+        table.add_column('Average consumption', justify='center')
         for r in readings_list:
             color = 'red' if r.avg_consumption > avg_consumption_avg else 'default'
             table.add_row(
@@ -145,7 +145,7 @@ def all_readings(json):
             )
 
         console.print(table)
-        console.print('Values above the mean are colored [red]red[/red].\n')
+        console.print('Values above the average are colored [red]red[/red].\n')
 
 
 @cli.command()
@@ -251,4 +251,4 @@ def bills(ctx, year, download):
                     )
 
                 console.print(table)
-                console.print('Values above the mean are colored [red]red[/red].\n')
+                console.print('Values above the average are colored [red]red[/red].\n')

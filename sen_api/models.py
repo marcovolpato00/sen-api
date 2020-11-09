@@ -23,7 +23,7 @@ class IntervalReading(object):
             'interval_end': str(self.interval_end.date()),
             'interval_days': self.interval_days,
             'total_consumption': self.total_consumption,
-            'mean_consumption': self.avg_consumption
+            'avg_consumption': self.avg_consumption
         }
 
     def __eq__(self, other: 'IntervalReading'):
