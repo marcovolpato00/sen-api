@@ -16,7 +16,12 @@ Implementing in the future:
 *Interacting with *SEN* web services is a real pain since it's such badly designed so I don't really know if I will
 keep adding more features.
 
-## Installing
+## Getting started
+### Obtaining an account
+You can obtain an account to access *SEN* web services [here](https://www.servizioelettriconazionale.it/it-IT/saa/registrazione?app=ESE_AREA_CLIENTI&rreg=classica&group=PF_ESE_USR).
+Of course, you should have an active electricity supply contract with Servizio Elettrico Nazionale.
+
+### Installing
 From source:
 ```
 python setup.py install --user

@@ -220,13 +220,12 @@ def bills(ctx, year, download):
                 echo(f'Bill with number {download} not found.')
                 ctx.exit()
 
-            with Halo(text=f'Downloading {found_bill.document_name} ...', spinner='dots'):
+            with Halo(text=f'Downloading {found_bill.document_name} ...', spinner='dots') as spinner:
                 download_path = provider.download_bill(found_bill)
-
-            if download_path:
-                console.print(f'Bill successfuly downloaded in [cyan]{download_path}[/cyan]')
-            else:
-                echo('Error during the download, enable verbose output for more details.')
+                if download_path:
+                    spinner.succeed(text=f'Bill successfuly downloaded at {download_path}')
+                else:
+                    spinner.fail(text='Error during the download, enable verbose output for more details.')
 
         else:
             if json:
@@ -240,6 +239,7 @@ def bills(ctx, year, download):
                 table.add_column('Number')
                 table.add_column('Due date')
                 table.add_column('Amount')
+                table.add_column('RAI tax')
                 table.add_column('Payed')
                 for b in bills_list:
                     amount_color = 'red' if b.amount > avg_amount else 'default'
@@ -247,6 +247,7 @@ def bills(ctx, year, download):
                         str(b.number),
                         str(b.due_date.date()),
                         f'[{amount_color}]{str(b.amount)}€[/{amount_color}]',
+                        '[green]Yes[/green]' if b.includes_rai_tax else '[red]No[/red]',
                         '[green]Yes[/green]' if b.is_payed else '[red]No[/red]'
                     )
 

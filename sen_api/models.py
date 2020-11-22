@@ -2,7 +2,6 @@ import math
 
 from .utils import str_to_datetime
 
-
 __all__ = [
     'IntervalReading',
     'Bill'
@@ -14,7 +13,7 @@ class IntervalReading(object):
         self.total_consumption = total_consumption
         self.interval_start = str_to_datetime(interval_start)
         self.interval_end = str_to_datetime(interval_end)
-        self.interval_days = (self.interval_end - self.interval_start).days + 1   # count the last day too
+        self.interval_days = (self.interval_end - self.interval_start).days + 1  # count the last day too
         self.avg_consumption = 0 if self.interval_days == 0 else math.ceil(self.total_consumption / self.interval_days)
 
     def to_dict(self) -> dict:
@@ -46,11 +45,12 @@ class IntervalReading(object):
 
 
 class Bill(object):
-    def __init__(self, number: int, due_date: str, amount: float, is_payed: bool, params: dict):
+    def __init__(self, number: int, due_date: str, amount: float, is_payed: bool, includes_rai_tax: bool, params: dict):
         self.number = number
         self.due_date = str_to_datetime(due_date)
         self.amount = amount
         self.is_payed = is_payed
+        self.includes_rai_tax = includes_rai_tax
         self.params = params
 
     @property
@@ -62,7 +62,8 @@ class Bill(object):
             'number': self.number,
             'due_date': str(self.due_date.date()),
             'amount': self.amount,
-            'is_payed': self.is_payed
+            'is_payed': self.is_payed,
+            'includes_rai_tax': self.includes_rai_tax
         }
 
     def __str__(self):
@@ -70,7 +71,8 @@ class Bill(object):
                f'number={str(self.number)},' \
                f'due_date={str(self.due_date.date())},' \
                f'amount={str(self.amount)},' \
-               f'is_payed={str(self.is_payed)}>'
+               f'is_payed={str(self.is_payed)}>' \
+               f'includes_rai_tax={str(self.includes_rai_tax)}>'
 
     def __repr__(self):
         return self.__str__()
