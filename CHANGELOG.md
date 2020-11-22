@@ -13,3 +13,6 @@
 
 ### Changed
 - changed all occurrences of "mean" to "average"
+
+[0.1.2]: https://github.com/marcovolpato00/sen-api/compare/0.1.1...0.1.2
+[0.1.1]: https://github.com/marcovolpato00/sen-api/compare/0.1.0...0.1.1
