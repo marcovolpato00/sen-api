@@ -201,6 +201,7 @@ class SENProvider(object):
                 due_date=cells[1].text,
                 amount=float(cells[2].text.replace(',', '.')),
                 is_payed=(cells[5].text.strip() == 'Incassata totalmente'),
+                includes_rai_tax=(cells[4].find('img').get('alt') == 'Canone Rai in Fattura'),
                 params=params
             )
             bills.append(bill)

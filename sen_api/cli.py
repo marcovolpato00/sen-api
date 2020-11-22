@@ -240,6 +240,7 @@ def bills(ctx, year, download):
                 table.add_column('Number')
                 table.add_column('Due date')
                 table.add_column('Amount')
+                table.add_column('RAI tax')
                 table.add_column('Payed')
                 for b in bills_list:
                     amount_color = 'red' if b.amount > avg_amount else 'default'
@@ -247,6 +248,7 @@ def bills(ctx, year, download):
                         str(b.number),
                         str(b.due_date.date()),
                         f'[{amount_color}]{str(b.amount)}€[/{amount_color}]',
+                        '[green]Yes[/green]' if b.includes_rai_tax else '[red]No[/red]',
                         '[green]Yes[/green]' if b.is_payed else '[red]No[/red]'
                     )
 
