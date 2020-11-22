@@ -220,13 +220,12 @@ def bills(ctx, year, download):
                 echo(f'Bill with number {download} not found.')
                 ctx.exit()
 
-            with Halo(text=f'Downloading {found_bill.document_name} ...', spinner='dots'):
+            with Halo(text=f'Downloading {found_bill.document_name} ...', spinner='dots') as spinner:
                 download_path = provider.download_bill(found_bill)
-
-            if download_path:
-                console.print(f'Bill successfuly downloaded in [cyan]{download_path}[/cyan]')
-            else:
-                echo('Error during the download, enable verbose output for more details.')
+                if download_path:
+                    spinner.succeed(text=f'Bill successfuly downloaded at {download_path}')
+                else:
+                    spinner.fail(text='Error during the download, enable verbose output for more details.')
 
         else:
             if json:

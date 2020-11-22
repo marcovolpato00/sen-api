@@ -224,4 +224,6 @@ class SENProvider(object):
             with open(path, 'wb') as f:
                 f.write(response.content)
             return path
+        else:
+            logger.error(f'Unexpected content type: \"{response.headers["content-type"]}\"')
         return None
