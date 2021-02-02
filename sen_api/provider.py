@@ -176,13 +176,20 @@ class SENProvider(object):
     def get_bills(self, year: str) -> List[Bill]:
         if year not in self.get_bills_available_years():
             error = f'Year {year} is not available'
-            logger.debug(error)
+            logger.error(error)
             raise ValueError(error)
+
         data = {'annoScelto': year}
         response = self._session.post(self._bills_url, data=data)
         soup = self._get_soup(response.text)
         table = soup.find('table', id='tab_bollette')
         bills = []
+
+        if not table:
+            error = f'No bills found for year {year}'
+            logger.error(error)
+            raise ValueError(error)
+
         for row in table.find_all('tr', attrs={'class': year}):
             # store hidden inputs in params dict, used later to download the bill
             params_input = row.find_all('input')
